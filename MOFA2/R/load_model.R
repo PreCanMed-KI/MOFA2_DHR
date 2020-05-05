@@ -312,7 +312,7 @@ load_model <- function(file, sort_factors = TRUE, on_disk = FALSE, load_data = T
   }
   
   # Print message about intercept factors
-  if (isTRUE(remove_intercept_factors) & any(object@model_options$likelihoods!="gaussian")) {
+  if (any(object@model_options$likelihoods!="gaussian")) {
     non_gaussian_views <- names(which(object@model_options$likelihoods!="gaussian"))
     for (m in non_gaussian_views) {
       W <- get_weights(object, views=m)[[1]]
