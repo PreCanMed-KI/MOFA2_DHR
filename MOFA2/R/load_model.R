@@ -311,16 +311,15 @@ load_model <- function(file, sort_factors = TRUE, on_disk = FALSE, load_data = T
     }
   }
   
-  # Remove inactive factors
-  # if (isTRUE(remove_intercept_factors) & any(object@model_options$likelihoods!="gaussian")) {
-  #   non_gaussian_views <- names(which(object@model_options$likelihoods!="gaussian"))
-  #   for (m in non_gaussian_views) {
-  #     W <- get_weights(object, views=m)[[1]]
-  #     intercept_factor <- which.max(abs(colMeans(W)))
-  #     object <- subset_factors(object, factors_names(object)[-intercept_factor])
-  #     message(sprintf("%s is determined to be an intercept Factor for the %s non-gaussian view and it has been removed from the model. To disable this behaviour set remove_intercept_factors=FALSE",names(intercept_factor),m))
-  #   }
-  # }
+  # Print message about intercept factors
+  if (isTRUE(remove_intercept_factors) & any(object@model_options$likelihoods!="gaussian")) {
+    non_gaussian_views <- names(which(object@model_options$likelihoods!="gaussian"))
+    for (m in non_gaussian_views) {
+      W <- get_weights(object, views=m)[[1]]
+      intercept_factor <- which.max(abs(colMeans(W)))
+      message(sprintf("%s seems to be an intercept Factor for the %s non-gaussian view",names(intercept_factor),m))
+    }
+  }
   
   # [Done in mofapy2] Sort factors by total variance explained
   # if (isTRUE(sort_factors) && object@dimensions$K > 1) {

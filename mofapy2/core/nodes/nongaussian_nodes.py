@@ -200,8 +200,8 @@ class Poisson_PseudoY(PseudoY_Seeger):
         self.E[self.mask] = 0.
 
         # regress out feature-wise mean from the pseudodata
-        self.means = self.E.mean(axis=0).data
-        self.E -= self.means
+        # self.means = self.E.mean(axis=0).data
+        # self.E -= self.means
 
     def calculateELBO(self):
         """ Compute Evidence Lower Bound """
@@ -260,8 +260,8 @@ class Bernoulli_PseudoY(PseudoY_Seeger):
         self.E = self.params["zeta"] - 4.*(sigmoid(self.params["zeta"]) - self.obs)
 
         # regress out feature-wise mean from the pseudodata
-        self.means = self.E.mean(axis=0).data
-        self.E -= self.means
+        # self.means = self.E.mean(axis=0).data
+        # self.E -= self.means
 
     def calculateELBO(self):
         # Compute Lower Bound using the Bernoulli likelihood with observed data
@@ -351,8 +351,8 @@ class Bernoulli_PseudoY_Jaakkola(PseudoY):
         self.E = (2.*self.obs - 1.)/(4.*lambdafn(self.params["zeta"]))
 
         # regress out feature-wise mean from the pseudodata
-        self.means = self.E.mean(axis=0).data
-        self.E -= self.means
+        # self.means = self.E.mean(axis=0).data
+        # self.E -= self.means
 
     def updateParameters(self, ix=None, ro=None):
         Z = self.markov_blanket["Z"].getExpectations()
