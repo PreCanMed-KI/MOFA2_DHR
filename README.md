@@ -5,6 +5,7 @@
 [![DOI](https://zenodo.org/badge/105765144.svg)](https://zenodo.org/badge/latestdoi/105765144) -->
 
 This branch ("intercept_factor") was used to run MOFA+ for the manuscript https://www.biorxiv.org/content/10.1101/2020.11.11.365387v2
+
 For the most updated version of MOFA+ see https://biofam.github.io/MOFA2/
 
 
